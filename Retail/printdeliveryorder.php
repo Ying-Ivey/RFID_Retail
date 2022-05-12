@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
                                     <tr>
                                         <?php
                                         $result = mysqli_query($con, "SELECT * FROM deliveryorder WHERE delivery_order_id= $search_id ;") or die("query 1 incorrect.....");
-                                        // $array_total_expected_quantity = array();
+
                                         $array_total_actual_quantity = array();
                                         while (list($delivery_Order_id, $delivery_Order_date, $order_status, $expected_quantity, $actual_quantity) = mysqli_fetch_array($result)) {
 
@@ -89,7 +89,8 @@ if (isset($_GET['id'])) {
                                         <tr>
                                             <th>product_line_id</th>
                                             <th>name</th>
-                                            <th>total</th>
+                                            <th>expected_quantity</th>
+                                            <th>actual_quantity</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -97,17 +98,20 @@ if (isset($_GET['id'])) {
                                         if (isset($_GET['id'])) {
                                             $search_id = $_GET['id'];
 
-                                            $result = mysqli_query($con, "SELECT * FROM deliveryorderdetail, productline WHERE delivery_order_id= $search_id and deliveryorderdetail.product_line_id = productline.product_line_id;",) or die("query 1
+                                            $result = mysqli_query($con, "SELECT count(is_checked) as actual_quantity, productinstancerfid.product_line_id, productline.name, total FROM productline, productinstancerfid, deliveryorderdetail WHERE productinstancerfid.is_checked =1 and productinstancerfid.delivery_Order_id = '$search_id' and deliveryorderdetail.delivery_Order_id = productinstancerfid.delivery_Order_id and deliveryorderdetail.product_line_id = productinstancerfid.product_line_id and productline.product_line_id=deliveryorderdetail.product_line_id GROUP BY productinstancerfid.product_line_id;") or die("query 1
                                     incorrect.....");
 
-                                            while (list($delivery_order_id, $product_line_id, $total, $product_line_id, $name) =
+
+                                            while (list($actual_quantity, $product_line_id, $name, $total) =
                                                 mysqli_fetch_array($result)
                                             ) {
+
                                                 echo "<tr>
                                     
                                         <td>$product_line_id</td>
                                         <td>$name</td>
                                         <td>$total</td>
+                                        <td>$actual_quantity</td>
                                     </tr>";
                                             }
                                         }

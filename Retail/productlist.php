@@ -45,7 +45,7 @@
                                          <th>name</th>
                                          <th>price</th>
                                          <th>stock</th>
-
+                                         <th>Edit</th>
                                      </tr>
                                  </thead>
                                  <tbody>
@@ -57,14 +57,19 @@
                                             while (list($product_line_id, $name, $price, $stock) = mysqli_fetch_array($result)) { ?>
 
                                          <?php
+                                                $product_price = number_format($price, 0, '', ',');
                                                 echo "<td>$product_line_id</td>
                                      <td>$name</td>
-                                     <td>$price</td>
-                                     <td>$stock</td>
-                                    </tr>";
+                                     <td>$product_price</td>
+                                         <td>$stock</td>" ?>
+                                         <td><a href='editproduct.php?update_id=<?php echo $product_line_id; ?>'>✎</a>
+                                         </td>
+                                     </tr>
+                                     <?php
                                             }
 
-                                            ?>
+                                    ?>
+
 
                                  </tbody>
                              </table>

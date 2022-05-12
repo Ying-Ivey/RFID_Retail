@@ -89,6 +89,7 @@
                                          <th>order_status</th>
                                          <th>expected_quantity</th>
                                          <th>actual_quantity</th>
+                                         <th>Details</th>
                                          <th>Edit</th>
                                          <th>Delete</th>
                                          <th>Print</th>
@@ -109,6 +110,9 @@
                                                 <td>$order_status</td>
                                                 <td>$expected_quantity</td>
                                                 <td>$actual_quantity</td>" ?>
+                                         <td><a
+                                                 href='deliveryorderlist.php?search=<?php echo $delivery_Order_id; ?>'>📄</a>
+                                         </td>
                                          <td><a
                                                  href='editdeliveryorder.php?update_id=<?php echo $delivery_Order_id; ?>'>✎</a>
                                          </td>

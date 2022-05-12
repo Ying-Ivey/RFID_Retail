@@ -76,10 +76,10 @@ public class RFIDScanActivity extends Activity {
     private String fCurFilePath = "";
     private boolean fIsEmulator = false;
 
-//    public static final String URLSELECTProductIDAndName = "http://172.20.10.2/Retail/selectproductidandname.php";
-//    public static final String URLUPDATEDeliveryOrder = "http://172.20.10.2/Retail/checkrfidlist.php";
-    public static final String URLSELECTProductIDAndName = "http://10.0.0.2/Retail/selectproductidandname.php";
-    public static final String URLUPDATEDeliveryOrder = "http://10.0.0.2/Retail/checkrfidlist.php";
+    public static final String URLSELECTProductIDAndName = "http://172.20.10.2/Retail/selectproductidandname.php";
+    public static final String URLUPDATEDeliveryOrder = "http://172.20.10.2/Retail/checkrfidlist.php";
+//    public static final String URLSELECTProductIDAndName = "http://10.0.0.2/Retail/selectproductidandname.php";
+//    public static final String URLUPDATEDeliveryOrder = "http://10.0.0.2/Retail/checkrfidlist.php";
 
     String strID = "";
     String strDate = "";
@@ -320,10 +320,10 @@ public class RFIDScanActivity extends Activity {
         public void onClick(View v) {
             if (BtInventory.getText().equals(getString(R.string.btInventory))) {
                 //remember uncomment this
-//                if (tagList.size() == 0) {
-//                    UIHelper.ToastMessage(RFIDScanActivity.this, "No data");
-//                    return;
-//                }
+                if (tagList.size() == 0) {
+                    UIHelper.ToastMessage(RFIDScanActivity.this, "No data");
+                    return;
+                }
 
                 try {
                     // save actual quantity
@@ -335,14 +335,13 @@ public class RFIDScanActivity extends Activity {
                     if(lstRFIDMapping.size()>0){
                         lstRFIDMapping.clear();
                     }
-//                    lstRFID = getListRFID(tagList);
-//                    lstRFIDMapping = getListRFID(tagList);
+                    lstRFID = getListRFID(tagList);
+                    lstRFIDMapping = getListRFID(tagList);
 
-                    lstRFID.add("E280689020004003E24729E0");
-                    lstRFID.add("E280689020005003E24711E0");
-                    lstRFID.add("G300 1545 325G 0089 1132 4237");
-                    lstRFID.add("U2G5 6677 34B3 1164 3367 2445");
-                    lstRFIDMapping.add("E280689020004003E24729E0");
+//                    lstRFID.add("E200 240B 0075 1320");
+//                    lstRFID.add("E280 6000 0209 58CD");
+//                    lstRFIDMapping.add("E200 240B 0075 1320");
+//                    lstRFIDMapping.add("E280 6000 0209 58CD");
 
                     Log.i("tagLstRFID", "[" + lstRFID + "]");
                     Log.i("tagRFIDMapping", "[" + lstRFIDMapping + "]");
@@ -394,10 +393,9 @@ public class RFIDScanActivity extends Activity {
                     String[] partsRFID = lstRFIDMappingToString.split("-");
                     Log.i("lstRFIDMappingToString", "[" + lstRFIDMappingToString + "]");
 
-
-                    if (partsRFID.length > 1) {
-                        UIHelper.ToastMessage(RFIDScanActivity.this, R.string.listRFIDLengthMoreThanOne);
-                    } else {
+//                    if (partsRFID.length > 1) {
+//                        UIHelper.ToastMessage(RFIDScanActivity.this, R.string.listRFIDLengthMoreThanOne);
+//                    } else {
                         Intent in = new Intent(RFIDScanActivity.this, MappingRFIDProduct.class);
                         Gson gson = new Gson();
                         String intentData = "{\"products\":" + gson.toJson(list) + "}";
@@ -407,7 +405,7 @@ public class RFIDScanActivity extends Activity {
 
                         startActivity(in);
                         finish();
-                    }
+                    //}
                 }
             } else {
                 UIHelper.ToastMessage(RFIDScanActivity.this, R.string.uhf_msg_inventory_save_wanrning);

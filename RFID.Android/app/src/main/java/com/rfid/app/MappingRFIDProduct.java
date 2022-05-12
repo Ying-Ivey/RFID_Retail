@@ -35,13 +35,13 @@ import java.util.Map;
 public class MappingRFIDProduct extends AppCompatActivity{
     private Spinner sp_product;
     private String strReceiveRFID, strRFID, stridname_removefirstlastchar, stridname_json;
-    private String product_line_id;
+    private String product_line_id, strRFIDReceive;
     private String[] strID, strname;
     EditText id;
     Button btSave, btReturn;
-    //public static final String URLINSERT = "http://172.20.10.2/Retail/insertProductInstance.php";
+    public static final String URLINSERT = "http://172.20.10.2/Retail/insertProductInstance.php";
 
-    public static final String URLINSERT = "http://10.0.0.2/Retail/insertproductinstance.php";
+    //public static final String URLINSERT = "http://10.0.0.2/Retail/insertproductinstance.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,12 @@ public class MappingRFIDProduct extends AppCompatActivity{
 
         strReceiveRFID = intent.getExtras().getString("RFID");
         strRFID = strReceiveRFID.substring(1, strReceiveRFID.length() - 1);
-        id.setText(strRFID);
+        String[] RFIDs = strRFID.split("-");
+        strRFIDReceive = new String();
+        for (int i = 0; i<RFIDs.length; i++ ){
+            strRFIDReceive += RFIDs[i] + "\n";
+        }
+        id.setText(strRFIDReceive);
         //get list product id and and, split "{"product"} in string
         stridname_json = intent.getExtras().getString("ListProductIDAndName");
         Log.i("list", "[" + stridname_json + "]");

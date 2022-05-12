@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/product_instance_id"
             android:hint="product_instance_id"
-            android:inputType="text"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
             />
         <Spinner
             android:id="@+id/sp_product"

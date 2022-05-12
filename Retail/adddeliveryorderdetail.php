@@ -85,8 +85,8 @@ $id = $_GET['id'];
         var html = "<tr>";
         html += "<td>" + items + "</td>";
         html +=
-            "<select name='productid[]'><option value='SP001' selected='selected'>Laptop Asus Gaming Rog Strix G15</option><option value='SP002'>Smart Tivi 4K The Serif Samsung</option><option value='SP003'>Tai nghe Bluetooth Apple AirPods 3</option><option value='SP004'>Đồng hồ thông minh Xiaomi Watch</option></select>"
-        // html += "<td><input type='text' name='productid[]'></td>";
+            "<select name='productid[]'><option value='SP001' selected='selected'>Laptop Asus Gaming Rog Strix G15</option><option value='SP002'>Smart Tivi 4K The Serif Samsung</option><option value='SP003'>Tai nghe Bluetooth Apple AirPods 3</option><option value='SP004'>Đồng hồ thông minh Xiaomi Watch</option><option value='SP005''>Android Tivi Sony 4K</option><option value='SP006'>Máy lạnh Toshiba</option><option value='SP007'>Tủ lạnh Toshiba Inverter 180 lít</option></select>"
+
         html += "<td><input type='text' name='total[]'></td>";
         html +=
             "<td><button class='btn' type = 'button' onclick = 'deleteRow(this);' > Delete </button></td > ";

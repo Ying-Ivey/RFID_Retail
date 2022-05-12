@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewDeliveryOrder extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
-//    public static final String URLSELECT = "http://172.20.10.2/Retail/select.php";
-public static final String URLSELECT = "http://10.0.0.2/Retail/select.php";
+ public static final String URLSELECT = "http://172.20.10.2/Retail/select.php";
+//public static final String URLSELECT = "http://10.0.0.2/Retail/select.php";
 
     ListView list;
     SwipeRefreshLayout swipe;

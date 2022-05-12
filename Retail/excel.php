@@ -91,7 +91,8 @@ header('Content-disposition: attachment; filename=' . rand() . '.xls');
     <tr>
         <th>Product line_id</th>
         <th>Name</th>
-        <th>Total</th>
+        <th>Expected quantity</th>
+        <th>Actual quantity</th>
     </tr>
 
     <tr>
@@ -99,16 +100,21 @@ header('Content-disposition: attachment; filename=' . rand() . '.xls');
         if (isset($_GET['id'])) {
             $search_id = $_GET['id'];
 
-            $result = mysqli_query($con, "SELECT * FROM deliveryorderdetail, productline WHERE delivery_order_id= $search_id and deliveryorderdetail.product_line_id = productline.product_line_id;",) or die("query 1
+            $result = mysqli_query($con, "SELECT count(is_checked) as actual_quantity, productinstancerfid.product_line_id, productline.name, total FROM productline, productinstancerfid, deliveryorderdetail WHERE productinstancerfid.is_checked =1 and productinstancerfid.delivery_Order_id = '$search_id' and deliveryorderdetail.delivery_Order_id = productinstancerfid.delivery_Order_id and deliveryorderdetail.product_line_id = productinstancerfid.product_line_id and productline.product_line_id=deliveryorderdetail.product_line_id GROUP BY productinstancerfid.product_line_id;") or die("query 1
                                     incorrect.....");
 
-            while (list($delivery_order_id, $product_line_id, $total, $product_line_id, $name) =
+
+            while (list($actual_quantity, $product_line_id, $name, $total) =
                 mysqli_fetch_array($result)
             ) {
-                echo "<tr><td>$product_line_id</td>
-                          <td>$name</td>
-                          <td>$total</td>
-                       </tr>";
+
+                echo "<tr>
+                                    
+                                        <td>$product_line_id</td>
+                                        <td>$name</td>
+                                        <td>$total</td>
+                                        <td>$actual_quantity</td>
+                                    </tr>";
             }
         }
         ?>
