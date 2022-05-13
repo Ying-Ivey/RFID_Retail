@@ -54,7 +54,9 @@ public class MappingRFIDProduct extends AppCompatActivity{
         sp_product = (Spinner) findViewById(R.id.sp_product);
         Intent intent = getIntent();
 
+        //receive RFID from RFIDScanACtivity and
         strReceiveRFID = intent.getExtras().getString("RFID");
+        //reformat RFID to display on the screen and call api
         strRFID = strReceiveRFID.substring(1, strReceiveRFID.length() - 1);
         String[] RFIDs = strRFID.split("-");
         strRFIDReceive = new String();
@@ -71,6 +73,7 @@ public class MappingRFIDProduct extends AppCompatActivity{
 
         try {
             JSONArray array = new JSONArray(splits[1]);
+            //array ID and name from ScanActivity, get id to api and name when show on the screen easier
             strID = new String[array.length()];
             strname = new String[array.length()];
             for (int i = 0; i < array.length(); i++) {
@@ -79,7 +82,7 @@ public class MappingRFIDProduct extends AppCompatActivity{
                 strname[i] = object.getString("name");
 
             }
-            setData();
+            setData(); //show product name in dropdown list
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -87,7 +90,7 @@ public class MappingRFIDProduct extends AppCompatActivity{
 
         btSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //check rfid da ton tai chua
+                //insert RFID - ID Product in mapping table
                 saveProcess();
 
             }

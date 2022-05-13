@@ -138,7 +138,7 @@ public class RFIDScanActivity extends Activity {
             fIsEmulator = UIHelper.isEmulator();
             UIHelper.initSound(RFIDScanActivity.this);
             initUHF();
-
+            //when check delivery order, get info of delivery order
             Intent intent = getIntent();
             if (intent.hasExtra("delivery_Order_id") && intent.hasExtra("delivery_Order_date") && intent.hasExtra("order_status") && intent.hasExtra("expected_quantity")) {
                 strID = intent.getExtras().getString("delivery_Order_id");
@@ -147,7 +147,7 @@ public class RFIDScanActivity extends Activity {
                 strExpQuan = intent.getExtras().getString("expected_quantity");
             }
 
-            getProductIDAndName();
+            getProductIDAndName(); //from api
         } catch (Exception ex) {
             UIHelper.showExceptionError(RFIDScanActivity.this, ex);
         }

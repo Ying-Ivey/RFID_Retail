@@ -13,6 +13,7 @@ import com.rfid.app.R;
 import java.util.List;
 
 public class DeliveryOrderAdapter extends BaseAdapter {
+    // how data of delivery orders before checking the delivery order
     Activity activity;
     List<DeliveryOrder> items;
     private LayoutInflater inflater;

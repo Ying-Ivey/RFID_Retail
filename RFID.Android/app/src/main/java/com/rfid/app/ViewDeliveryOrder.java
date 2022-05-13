@@ -91,6 +91,8 @@ public class ViewDeliveryOrder extends AppCompatActivity implements SwipeRefresh
         callVolley();
 
     }
+
+    //get delivery order information
     private void callVolley() {
         itemList.clear();
         adapter.notifyDataSetChanged();
