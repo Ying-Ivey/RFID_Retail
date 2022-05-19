@@ -39,7 +39,7 @@ public class MappingRFIDProduct extends AppCompatActivity{
     private String[] strID, strname;
     EditText id;
     Button btSave, btReturn;
-    public static final String URLINSERT = "http://172.20.10.2/Retail/insertProductInstance.php";
+    public static final String URLINSERT = "http://172.20.10.3/Retail/insertProductInstance.php";
 
     //public static final String URLINSERT = "http://10.0.0.2/Retail/insertproductinstance.php";
 

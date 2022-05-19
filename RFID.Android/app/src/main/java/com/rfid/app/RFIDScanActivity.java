@@ -76,8 +76,8 @@ public class RFIDScanActivity extends Activity {
     private String fCurFilePath = "";
     private boolean fIsEmulator = false;
 
-    public static final String URLSELECTProductIDAndName = "http://172.20.10.2/Retail/selectproductidandname.php";
-    public static final String URLUPDATEDeliveryOrder = "http://172.20.10.2/Retail/checkrfidlist.php";
+    public static final String URLSELECTProductIDAndName = "http://172.20.10.3/Retail/selectproductidandname.php";
+    public static final String URLUPDATEDeliveryOrder = "http://172.20.10.3/Retail/checkrfidlist.php";
 //    public static final String URLSELECTProductIDAndName = "http://10.0.0.2/Retail/selectproductidandname.php";
 //    public static final String URLUPDATEDeliveryOrder = "http://10.0.0.2/Retail/checkrfidlist.php";
 
